@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after{
+	box-sizing: border-box;	
+}
+/*Css variables*/
+:root{
+	--header-main:clamp(2.5rem, 5vw + 1rem, 3.4375rem);
+    --calculator-background-color:rgb(0,0,0);
+    --input-background-color:rgb(217, 217, 217);
+    --button-background-color: rgb(91, 91, 91);
+    --border-color: #0090FF;
+  }
+  
+/*-----------------Font styles----------------------*/
+.funnel-sans{
+    font-family: "Funnel Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 450;
+    font-style: normal;
+}
+
+.calculator{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--calculator-background-color);
+    font-family: var(--font-family);
+    padding:1rem;
+    border-radius: 2rem;
+    margin-block: 1.5rem;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--input-background-color);
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--button-background-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.button-row1{
+    border-radius: 100%;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.button-row1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
