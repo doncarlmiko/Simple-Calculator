@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="../js/index.js" defer></script>
 
+    <!--Font styles-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Protest+Strike&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka:wght@300..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Protest+Strike&display=swap" rel="stylesheet">
     <link href="../css/calculatorMain.css" rel="stylesheet"/>
+
     <title>Simple Calculator Project</title>
 </head>
 <body>
@@ -20,40 +21,44 @@
         </div>
         
         <div class="button-container">
-
-            <div class="button-row-style">
-                <button id="allClear" type ="button">AC</button>
-                <button id="modulo"  type="button">%</button>
-                <button id="clear" type="button">C</button>
-                <button id="divide" type="button">÷</button>
+            <!--Row 1-->
+            <div class="button-rows button-row-style">
+                <button id="allClear" type ="button"><span id="clearall-styles" class="funnel-sans">AC</span></button>
+                <button id="modulo"  type="button"><span id="percent-styles" class="funnel-sans">%</span></button>
+                <button id="clear" type="button"><span id ="clear-styles" class="funnel-sans">C</span></button>
+                <button id="divide" type="button"><span id="divide-styles" class="funnel-sans">÷</span></button>
             </div>
 
-            <div class="button-row-style">
-                <button id="seven" type="button">7</button>
-                <button id="eight" type="button">8</button>
-                <button id="nine" type="button">9</button>
-                <button id="multiply" type="button">X</button>
+            <!--Row 2-->
+            <div class="button-rows button-row-style">
+                <button id="seven" type="button"><span id="seven-styles" class="funnel-sans-bold">7</span></button>
+                <button id="eight" type="button"><span id="eight-styles" class="funnel-sans-bold">8</span></button>
+                <button id="nine" type="button"><span id="nine-styles" class="funnel-sans-bold">9</span></button>
+                <button id="multiply" type="button"><span id="multiply-styles">X</span></button>
             </div>
             
-            <div class="button-row-style">
-                <button id="four" type="button">4</button>
-                <button id="five" type="button">5</button>
-                <button id="six" type="button">6</button>
-                <button id="subtract" type="button">-</button> 
+            <!--Row 3-->
+            <div class="button-rows button-row-style">
+                <button id="four" type="button"><span id="four-styles" class="funnel-sans-bold">4</span></button>
+                <button id="five" type="button"><span id="five-styles" class="funnel-sans-bold">5</span></button>
+                <button id="six" type="button"><span id="six-styles" class="funnel-sans-bold">6</span></button>
+                <button id="subtract" type="button"><span id="subtract-styles" class="funnel-sans">-</span></button> 
             </div>
 
-            <div class="button-row-style">
-                <button id="one" type="button">1</button>
-                <button id="two" type="button">2</button>
-                <button id="three" type="button">3</button>
-                <button id="add" type="button">+</button>
+            <!--Row 4-->
+            <div class="button-rows button-row-style">
+                <button id="one" type="button"><span id="one-styles" class="funnel-sans-bold">1</span></button>
+                <button id="two" type="button"><span id="two-styles" class="funnel-sans-bold">2</span></button>
+                <button id="three" type="button"><span id="three-styles" class="funnel-sans-bold">3</span></button>
+                <button id="add" type="button"><span id="addition-styles" class="funnel-sans">+</span></button>
             </div>
 
-            <div class="button-row-style">
-                <button id="doubleZero" type="button">00</button>
-                <button id="zero" type="button">0</button>
-                <button id="plusMinus" type="button">.</button>
-                <button id="equals" type="button">=</button>
+            <!--Row 5-->
+            <div class="button-rows button-row-style">
+                <button id="doubleZero" type="button"><span id="double-zero-styles" class="funnel-sans-bold">00</span></button>
+                <button id="zero" type="button"><span id="zero-styles" class="funnel-sans-bold">0</span></button>
+                <button id="decimal-point" type="button"><span id="point-styles" class="funnel-sans-bold">.</span></button>
+                <button id="equals" type="button"><span id="equals-styles" class="funnel-sans">=</span></button>
             </div>   
         </div>
         
