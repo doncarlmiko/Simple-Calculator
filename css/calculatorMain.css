@@ -12,6 +12,10 @@
     --font-size-buttons:clamp(1.5625rem, 2vw + 1rem, 2.5rem);/* minimum 25px and maximum 40px */
     --border-color: #0090FF;
   }
+  body{
+    margin:0;
+    padding:0;
+}
   
 /*-----------------Font styles----------------------*/
 
@@ -38,7 +42,8 @@
     font-family: var(--font-family);
     padding:1rem;
     border-radius: 2rem;
-    margin-block: 1.5rem;
+    margin-block: 0.5rem;
+
 }
 
 .input-container{
@@ -46,11 +51,44 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 19.170625rem;
+    height: 7.08rem;
     background-color: var(--input-background-color);
     border-radius: 2rem;
-    padding: 1rem;
+    padding-block: 1rem;
+    margin-block-start: 1.2rem;
+}
+
+#result1{
+    font-size: clamp(0.2rem, 3vw + 1rem, 1.5rem);
+    width: 90%;
+    text-align: right;
+    color: black;
+}
+
+#result2{
+    width: 95%;
+    height: 4rem;
+    font-size: clamp(2.5rem, 3vw + 1rem, 4rem);
+    text-align: right;
+    background-color: var(--input-background-color);
+    border: none;
+}
+
+#result2:focus{
+    outline: none;
+}
+
+/* Hide WebKit scrollbar (Chrome, Safari, newer versions of Opera) */
+#result2::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+/* Prevent scrollbar space reservation */
+#result2::-webkit-scrollbar-track {
+    display: none;
 }
 
 /*--Button styles and positioning--*/
@@ -63,7 +101,8 @@
     height: 100%;
     background-color: var(--calculator-background-color);
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0;
+    margin-block-start: 1.5rem;
 }
 
 button{
@@ -82,7 +121,7 @@ button:hover {
 
 .button-row-style >button{
     padding:0;
-    margin:0.2rem;
+    margin: 0.5rem;
 }
 
 .button-rows{
@@ -91,6 +130,7 @@ button:hover {
     align-items: center;
     width: 100%;
     height: 100%;
+    padding:0;
 }
 
 span{
@@ -109,4 +149,8 @@ span{
 
 #seven, #eight, #nine, #four, #five, #six, #one, #two, #three, #zero, #doubleZero{
     font-size:clamp(1.875rem, 2vw + 1rem, 2.5rem);
+}
+
+footer{
+    text-align: center;
 }
