@@ -12,7 +12,7 @@ const numberDoubleZeroButton = document.querySelector('#doubleZero');*/
 
 const numberButtons = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #doubleZero');
 
-const operatorButtons = document.querySelector('#add');
+const additionOperator = document.querySelector('#add');
 
 let displayWithOperator = document.querySelector('#result1');
 let display = document.querySelector('#result2');
@@ -21,6 +21,7 @@ let secondInput;
 let operator;
 let sum;
 
+const arrSum = [];
 
 numberButtons.forEach(button=>{
     button.addEventListener('click',()=>{
@@ -37,6 +38,10 @@ numberButtons.forEach(button=>{
             if (display.value === firstInput.toString()) {
                 display.value = ''; // Only clear when new number is clicked
             }
+            else if(display.value == sum){
+                display.value = ''; // Only clear when new number is clicked
+            }
+
             display.value += button.value;
             useSecondInput(display.value);
         }
@@ -49,16 +54,43 @@ function useFirstInput(firstInputValue) {
    console.log('Current firstInput:', firstInput);
 }
 
-operatorButtons.addEventListener('click',()=>{
+//Event for Addition operator button
+additionOperator.addEventListener('click',()=>{
     operator = ' + ';
-    display.value = firstInput;
-    displayWithOperator.textContent = firstInput + operator;
+    if(sum === null){
+        display.value = firstInput;
+    }
+    else if (sum !=null){
+        display.value=sum;
+        displayWithOperator.textContent = sum + operator;
+    }
+    else{
+        displayWithOperator.textContent = firstInput + operator;
+    }
     console.log('Current operator:', operator);
 });
 
 // Function to get the second input
 function useSecondInput(secondInputValue) {
     secondInput = parseFloat(secondInputValue);
+    sum = calculateSum();
     console.log('Current secondInput:', secondInput);
+    console.log('Current sum:', sum);
+    console.log('Current array:', total);
 }
+
+
+function calculateSum(){
+    if(operator !==undefined){
+        if(total.length >= 2){
+            total.push(secondInput);
+        }
+        else{
+            total.push(firstInput);
+            total.push(secondInput);
+        }
+    }
+    const computeTotalSum = total.reduce((sum, current)=>sum + current,0);
+    return computeTotalSum;
+} 
 
