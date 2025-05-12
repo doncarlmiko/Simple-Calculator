@@ -76,21 +76,24 @@ function useSecondInput(secondInputValue) {
     sum = calculateSum();
     console.log('Current secondInput:', secondInput);
     console.log('Current sum:', sum);
-    console.log('Current array:', total);
+    console.log('Current array:',arrSum);
 }
 
 
 function calculateSum(){
     if(operator !==undefined){
-        if(total.length >= 2){
-            total.push(secondInput);
+        if(arrSum.length >= 2){
+            arrSum.push(secondInput);
         }
         else{
-            total.push(firstInput);
-            total.push(secondInput);
+            arrSum.push(firstInput);
+            arrSum.push(secondInput);
         }
     }
-    const computeTotalSum = total.reduce((sum, current)=>sum + current,0);
+    const computeTotalSum = arrSum.reduce((sum, current)=>sum + current,0);
     return computeTotalSum;
 } 
 
+function operate(){
+
+}
