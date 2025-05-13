@@ -39,7 +39,9 @@ numberButtons.forEach(button=>{
             if (display.value === firstInput.toString()) {
                 display.value = ''; // Only clear when new number is clicked
             }
-
+            else if(display.value !== secondInput.toString()){
+                display.value = ''; // Only clear when new number is clicked
+            }
             display.value += button.value;
             useSecondInput(display.value);
         }
@@ -59,9 +61,10 @@ additionOperator.addEventListener('click',()=>{
         display.value = firstInput;
     }
     else if (secondInput !=null){
-        displayWithOperator.textContent = secondInput + operator;
         display.value='';
         sum = calculateSum();
+        display.value = sum;
+        displayWithOperator.textContent = sum + operator;
     }
     else{
         display.value=firstInput;
@@ -101,8 +104,10 @@ equalsOperator.addEventListener('click',operate);
 function operate(){
     if(operator === ' + '){
         sum = calculateSum();
-        const numbersToAdd = arrSum.join(' + ');    
-        displayWithOperator.textContent = `${numbersToAdd} = `;
+        //display the last two numbers before the total sum.
+        const displayOfResult = sum - arrSum[arrSum.length-1];
+        
+        displayWithOperator.textContent = `${displayOfResult}+ ${arrSum[arrSum.length-1]} =`;
         display.value = sum;
         secondInput = sum;
 
