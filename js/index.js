@@ -1,9 +1,6 @@
 // Simple Calculator
 // This is a simple calculator that performs basic arithmetic operations.
 const numberButtons = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #doubleZero');
-
-const additionOperator = document.querySelector('#add');
-const subtractionOperator = document.querySelector('#subtract');
 const operatorButtons = document.querySelectorAll('#add, #subtract, #multiply, #divide');
 
 const equalsOperator = document.querySelector('#equals');
@@ -13,6 +10,8 @@ let display = document.querySelector('#result2');
 let firstInput;
 let secondInput;
 let operator;
+let total;
+
 
  // Define operations map
 const operations = {
@@ -21,7 +20,6 @@ const operations = {
     ' x ': (a, b) => a * b,
     ' ÷ ': (a, b) => a / b
 };
-let total;
 
 const arrSum = [];
 
