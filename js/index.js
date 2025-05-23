@@ -1,7 +1,7 @@
 // Simple Calculator
 // This is a simple calculator that performs basic arithmetic operations.
-const numberButtons = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #doubleZero');
-const operatorButtons = document.querySelectorAll('#add, #subtract, #multiply, #divide');
+const numberButtons = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #doubleZero, #decimal-point');
+const operatorButtons = document.querySelectorAll('#add, #subtract, #multiply, #divide,#modulo');
 
 const equalsOperator = document.querySelector('#equals');
 
@@ -15,10 +15,11 @@ let total;
 
  // Define operations map
 const operations = {
-    ' + ': (a, b) => a + b,
-    ' - ': (a, b) => a - b,
-    ' x ': (a, b) => a * b,
-    ' ÷ ': (a, b) => a / b
+    '+': (a, b) => parseFloat((a + b).toFixed(2)),
+    '-': (a, b) => parseFloat((a - b).toFixed(2)),
+    'x': (a, b) => parseFloat((a * b).toFixed(2)),
+    '÷': (a, b) => parseFloat((a / b).toFixed(2)),
+    '%': (a, b) => parseFloat((a % b).toFixed(2)),
 };
 
 const arrSum = [];
@@ -28,8 +29,17 @@ numberButtons.forEach(button=>{
          // For first number input
         if (operator === undefined) {
             if (display.value === '0') {
-                display.value = '';
+                    display.value = '';
             }
+
+            if(button.value ==='.' && display.value === ''){
+                    display.value = '0';
+            }
+            // Prevent multiple decimal points
+            if (button.value === '.' && display.value.includes('.')) {
+                return;
+            }
+
             display.value += button.value;
             useFirstInput(display.value);
         }
@@ -42,7 +52,6 @@ numberButtons.forEach(button=>{
                 else if(display.value !== secondInput.toString()){
                 display.value = ''; // Only clear when new number is clicked
                 }
-                //total = calculateTotal();
             }
             display.value += button.value;
             useSecondInput(display.value);
@@ -52,27 +61,26 @@ numberButtons.forEach(button=>{
 
 // Function to get the first Input
 function useFirstInput(firstInputValue) {
-    firstInput = parseFloat(firstInputValue);
+    firstInput = firstInputValue.endsWith('.')? firstInputValue : parseFloat(firstInputValue);
    console.log('Current firstInput:', firstInput);
 }
 
 //Event for Addition operator button
 operatorButtons.forEach(button => {
     button.addEventListener('click',()=>{
-        if(button.value in operations){
+        if(button.value in operations && firstInput !== undefined){
             // Set the operator based on button value
             operator = button.value;
             if(secondInput === undefined){
             display.value = firstInput;
-            displayWithOperator.textContent = firstInput + operator;
+            displayWithOperator.textContent = firstInput + ' ' + operator;
             }
             else{
                 firstInput = total; // Set firstInput to total for next operation
                 secondInput = undefined; // Reset secondInput for next number
-                displayWithOperator.textContent = total + operator;
+                displayWithOperator.textContent = total + ' ' + operator;
                 display.value = total;
             }
-            
         console.log('Current operator:', operator);
         }
     });
@@ -80,7 +88,7 @@ operatorButtons.forEach(button => {
 
 // Function to get the second input
 function useSecondInput(secondInputValue) {
-    secondInput = parseFloat(secondInputValue);
+    secondInput = secondInputValue.endsWith('.') ? secondInputValue : parseFloat(secondInputValue);
     
     // Calculate total as soon as second number is input
     total = calculateTotal();
@@ -104,10 +112,9 @@ equalsOperator.addEventListener('click',operate);
 
 function operate(){
     //operator === ' + ';
-    if(operator in operations){
+    if(operator in operations && firstInput !== undefined && secondInput !== undefined){
         total = calculateTotal();
         //display the last two numbers before the total sum.
-        const displayOfResult = arrSum;
         
         displayWithOperator.textContent = `${firstInput} ${operator} ${secondInput} =`;
         display.value = total;
