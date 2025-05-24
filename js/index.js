@@ -12,23 +12,20 @@ let secondInput;
 let operator;
 let total;
 
-
  // Define operations map
 const operations = {
-    '+': (a, b) => (a + b).toFixed(2),
-    '-': (a, b) => (a - b).toFixed(2),
-    'x': (a, b) => (a * b).toFixed(2),
-    '÷': (a, b) => (a / b).toFixed(2),
-    '%': (a, b) => (a % b).toFixed(2),
+    '+': (a, b) => (Number(a) + Number(b)),
+    '-': (a, b) => (Number(a) - Number(b)),
+    'x': (a, b) => (Number(a) * Number(b)),
+    '÷': (a, b) => (Number(a) / Number(b)),
+    '%': (a, b) => (Number(a) % Number(b)),
 };
-
-const arrSum = [];
 
 const clearButton = document.querySelector('#allClear');
 clearButton.addEventListener('click', clearAllInputNumber);
 
-//const clearLastButton = document.querySelector('#clearLast');
-
+const clearLastButton = document.querySelector('#clear');
+clearLastButton.addEventListener('click',clearLastInputNumber);
 
 numberButtons.forEach(button=>{
     button.addEventListener('click',()=>{
@@ -52,11 +49,16 @@ numberButtons.forEach(button=>{
         // For second number input
         else {
             if(operator in operations){
+                // Prevent multiple decimal points
+                if (button.value === '.' && display.value.includes('.')) {
+                return;
+                }
+
                 if (display.value === firstInput.toString()) {
                 display.value = ''; // Only clear when new number is clicked
                 }
                 else if(display.value !== secondInput.toString()){
-                display.value = ''; // Only clear when new number is clicked
+                display.value = ''; // Clear display before starting new number input
                 }
             }
             display.value += button.value;
@@ -83,7 +85,7 @@ operatorButtons.forEach(button => {
             }
             else{
                 firstInput = total; // Set firstInput to total for next operation
-                secondInput = undefined; // Reset secondInput for next number
+                //secondInput = undefined; // Reset secondInput for next number
                 displayWithOperator.textContent = total + ' ' + operator;
                 display.value = total;
             }
@@ -109,7 +111,14 @@ function useSecondInput(secondInputValue) {
 
 function calculateTotal(){
     if(operator in operations){
-        return operations[operator](firstInput, secondInput);
+        let finalTotal = operations[operator](firstInput, secondInput);
+        let finalTotalString = finalTotal.toString();
+
+        if(finalTotalString.includes('.')) {
+            finalTotal = finalTotal.toFixed(2); // Limit to 2 decimal places
+        }
+        console.log('Final total:', typeof finalTotal);
+        return finalTotal;
     }
     return 0;
 }
@@ -128,7 +137,6 @@ function operate(){
 
         console.log('Current secondInput:', secondInput);
         console.log('Current total:', total);
-        console.log('Current array:',arrSum);
     }
 }
 
@@ -142,6 +150,15 @@ function clearAllInputNumber(){
     console.log('Inputs cleared');
 }
 
-
-
-console.log('Current object:', arrSum);
+function clearLastInputNumber(){
+    if(display.value.length > 0) {
+        display.value = display.value.slice(0, -1); // Remove last character
+        if(secondInput!==undefined){
+            secondInput = display.value;
+        }
+        else {
+            firstInput = display.value;
+        }
+    }
+    console.log('Last input cleared');
+}
