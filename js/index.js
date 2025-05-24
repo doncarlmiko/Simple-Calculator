@@ -73,19 +73,19 @@ function useFirstInput(firstInputValue) {
    console.log('Current firstInput:', firstInput);
 }
 
-//Event for Addition operator button
+//Event for all the operators button
 operatorButtons.forEach(button => {
     button.addEventListener('click',()=>{
         if(button.value in operations && firstInput !== undefined){
             // Set the operator based on button value
             operator = button.value;
             if(secondInput === undefined){
-            display.value = firstInput;
-            displayWithOperator.textContent = firstInput + ' ' + operator;
+                display.value = firstInput;
+                displayWithOperator.textContent = firstInput + ' ' + operator;
             }
             else{
                 firstInput = total; // Set firstInput to total for next operation
-                //secondInput = undefined; // Reset secondInput for next number
+                secondInput = undefined; // Reset secondInput for next number
                 displayWithOperator.textContent = total + ' ' + operator;
                 display.value = total;
             }
@@ -98,14 +98,13 @@ operatorButtons.forEach(button => {
 function useSecondInput(secondInputValue) {
     secondInput = secondInputValue.endsWith('.') ? secondInputValue : parseFloat(secondInputValue);
     
-    // Calculate total as soon as second number is input
+    // Calculate total as soon as second number is inputted
     total = calculateTotal();
     display.value = secondInput;
     displayWithOperator.textContent = `${firstInput} ${operator}`;
 
     console.log('Current secondInput:', secondInput);
     console.log('Current total:', total);
-    console.log('Current array:',arrSum);
 }
 
 
@@ -124,7 +123,6 @@ function calculateTotal(){
 }
 
 equalsOperator.addEventListener('click',operate);
-
 function operate(){
     //operator === ' + ';
     if(operator in operations && firstInput !== undefined && secondInput !== undefined){
@@ -153,6 +151,8 @@ function clearAllInputNumber(){
 function clearLastInputNumber(){
     if(display.value.length > 0) {
         display.value = display.value.slice(0, -1); // Remove last character
+
+        // prevents clearing the last input after inputting a new number
         if(secondInput!==undefined){
             secondInput = display.value;
         }
