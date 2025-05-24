@@ -15,14 +15,20 @@ let total;
 
  // Define operations map
 const operations = {
-    '+': (a, b) => parseFloat((a + b).toFixed(2)),
-    '-': (a, b) => parseFloat((a - b).toFixed(2)),
-    'x': (a, b) => parseFloat((a * b).toFixed(2)),
-    '÷': (a, b) => parseFloat((a / b).toFixed(2)),
-    '%': (a, b) => parseFloat((a % b).toFixed(2)),
+    '+': (a, b) => (a + b).toFixed(2),
+    '-': (a, b) => (a - b).toFixed(2),
+    'x': (a, b) => (a * b).toFixed(2),
+    '÷': (a, b) => (a / b).toFixed(2),
+    '%': (a, b) => (a % b).toFixed(2),
 };
 
 const arrSum = [];
+
+const clearButton = document.querySelector('#allClear');
+clearButton.addEventListener('click', clearAllInputNumber);
+
+//const clearLastButton = document.querySelector('#clearLast');
+
 
 numberButtons.forEach(button=>{
     button.addEventListener('click',()=>{
@@ -125,5 +131,17 @@ function operate(){
         console.log('Current array:',arrSum);
     }
 }
+
+function clearAllInputNumber(){
+    display.value = '0';
+    displayWithOperator.textContent = '';
+    firstInput = undefined;
+    secondInput = undefined;
+    operator = undefined;
+    total = undefined;
+    console.log('Inputs cleared');
+}
+
+
 
 console.log('Current object:', arrSum);
