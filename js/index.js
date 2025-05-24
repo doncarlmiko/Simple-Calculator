@@ -152,6 +152,10 @@ function clearLastInputNumber(){
     if(display.value.length > 0) {
         display.value = display.value.slice(0, -1); // Remove last character
 
+        // Set display to '0' when all digits are cleared
+        if(display.value === '') {
+            display.value = '0';
+        }
         // prevents clearing the last input after inputting a new number
         if(secondInput!==undefined){
             secondInput = display.value;
