@@ -1,5 +1,7 @@
 // Simple Calculator
 // This is a simple calculator that performs basic arithmetic operations.
+
+'use strict';
 const numberButtons = document.querySelectorAll('#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero, #doubleZero, #decimal-point');
 const operatorButtons = document.querySelectorAll('#add, #subtract, #multiply, #divide,#modulo');
 
