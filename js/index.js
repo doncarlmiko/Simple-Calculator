@@ -111,11 +111,7 @@ function useSecondInput(secondInputValue) {
 function calculateTotal(){
     if(operator in operations){
         let finalTotal = operations[operator](firstInput, secondInput);
-        let finalTotalString = finalTotal.toString();
-
-        if(finalTotalString.includes('.')) {
-            finalTotal = finalTotal.toFixed(2); // Limit to 2 decimal places
-        }
+        
         console.log('Final total:', typeof finalTotal);
         return finalTotal;
     }

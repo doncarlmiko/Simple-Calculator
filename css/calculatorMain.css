@@ -56,7 +56,6 @@
     max-height: 7.08rem;
     background-color: var(--input-background-color);
     border-radius: 2rem;
-    padding-block: 1rem;
     margin-block-start: 1.2rem;
 }
 
@@ -69,11 +68,12 @@
 
 #result2{
     width: 95%;
-    height: 4rem;
-    font-size: clamp(2.5rem, 3vw + 1rem, 4rem);
+    height: 60rem;
+    font-size: clamp(2.5rem, 3vw + 1rem, 1.5rem);
     text-align: right;
     background-color: var(--input-background-color);
     border: none;
+    border-radius: 2rem;
 }
 
 #result2:focus{
